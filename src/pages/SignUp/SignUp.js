@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider';
 
 const SignUp = () => {
+    const { createEmailUser } = useContext(AuthContext);
+
     const handleSignUpForm = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -10,6 +13,15 @@ const SignUp = () => {
         const name = form.name.value;
         const photoURL = form.photoURL.value;
         console.log(email, password)
+
+        createEmailUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+            })
+            .catch(err => console.error(err));
+
     }
     return (
         <div>
@@ -51,7 +63,7 @@ const SignUp = () => {
                                     </label>
                                 </div>
                                 <div className="form-control mt-6">
-                                    <button className="btn btn-primary">Login</button>
+                                    <button className="btn btn-primary">Sign Up</button>
                                 </div>
                             </form>
                         </div>
