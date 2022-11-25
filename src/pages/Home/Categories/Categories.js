@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const Categories = () => {
     const [categories, setCategories] = useState([]);
+  
     useEffect(() => {
         fetch('http://localhost:5000/categories')
             .then(res => res.json())
@@ -9,6 +11,7 @@ const Categories = () => {
                 setCategories(data);
             })
     },[])
+    
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
             {
@@ -19,7 +22,7 @@ const Categories = () => {
                     <div className="card-body items-center text-center">
                         <h2 className="card-title">{category.name}</h2>
                         <div className="card-actions">
-                            <button className="btn btn-primary">Buy Now</button>
+                            <Link to={`/category/${category._id}`}><button className="btn btn-primary">Buy Now</button></Link> 
                         </div>
                     </div>
                 </div>)
