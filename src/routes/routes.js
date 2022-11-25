@@ -1,3 +1,4 @@
+import DashboardLayouts from "../Layouts/DashboardLayout";
 import BikeCategory from "../pages/BikeCategory/BikeCategory";
 import DashBoard from "../pages/DashBoard/DashBoard";
 import Login from "../pages/Login/Login";
@@ -41,7 +42,7 @@ export const router = createBrowserRouter([
     {
     
         path: '/dashboard',
-        element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
+        element: <PrivateRoute><DashboardLayouts></DashboardLayouts></PrivateRoute>,
         children: [
             
         ]

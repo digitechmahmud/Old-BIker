@@ -36,7 +36,14 @@ const AuthProvider = ({children}) => {
         return updateProfile(auth.currentUser, userInfo);
     }
 
-    const authInfo = { user, createEmailUser, loginUser, logOut, userProfileUpdate };
+    const authInfo = {
+        user,
+        createEmailUser,
+        loginUser,
+        logOut,
+        userProfileUpdate,
+        loading
+    };
     return (
         <div>
             <AuthContext.Provider value={authInfo}>
