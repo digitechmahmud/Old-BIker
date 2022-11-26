@@ -14,6 +14,7 @@ const NavBar = () => {
     const menuItems = <React.Fragment>
         <li><Link className="font-semibold text-accent" to='/home'>Home</Link></li>
         <li><Link className="font-semibold text-accent" to='/about'>About</Link></li>
+        <li><Link className="font-semibold text-accent" to='/blogs'>Blogs</Link></li>
         {
 
             user?.uid ?
@@ -27,7 +28,7 @@ const NavBar = () => {
     </React.Fragment>
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar fixed w-full z-10 top-0 bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">

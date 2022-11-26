@@ -1,5 +1,6 @@
 import DashboardLayouts from "../Layouts/DashboardLayout";
 import BikeCategory from "../pages/BikeCategory/BikeCategory";
+import Blogs from "../pages/Blogs/Blogs";
 import BookingModal from "../pages/BookingModal/BookingModal";
 import DashBoard from "../pages/DashBoard/DashBoard";
 import Login from "../pages/Login/Login";
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/blogs',
+                element: <Blogs></Blogs>
             },
             {
                 path: '/bookingmodal',
