@@ -1,5 +1,6 @@
 import DashboardLayouts from "../Layouts/DashboardLayout";
 import BikeCategory from "../pages/BikeCategory/BikeCategory";
+import BookingModal from "../pages/BookingModal/BookingModal";
 import DashBoard from "../pages/DashBoard/DashBoard";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
@@ -35,6 +36,12 @@ export const router = createBrowserRouter([
                 path: '/signup',
                 element: <SignUp></SignUp>
             },
+            {
+                path: '/bookingmodal',
+                element: <BookingModal></BookingModal>,
+                loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.id}`)
+            },
+
             
             
         ]
