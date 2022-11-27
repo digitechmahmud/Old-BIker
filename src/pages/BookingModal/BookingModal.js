@@ -35,6 +35,7 @@ const BookingModal = ({ bikeOption, setBikeOption }) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                alert("Booked confirmed")
                 
             })
     }
