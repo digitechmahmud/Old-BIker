@@ -15,8 +15,8 @@ const NavBar = () => {
         <li><Link className="font-semibold text-accent" to='/home'>Home</Link></li>
         <li><Link className="font-semibold text-accent" to='/about'>About</Link></li>
         <li><Link className="font-semibold text-accent" to='/blogs'>Blogs</Link></li>
+        
         {
-
             user?.uid ?
                 <>
                     <li><Link className="font-semibold text-accent" to="/dashboard">Deshboard</Link></li>

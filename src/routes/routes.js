@@ -1,9 +1,11 @@
+import DashboardLayout from "../Layouts/DashboardLayout";
 import DashboardLayouts from "../Layouts/DashboardLayout";
 import BikeCategory from "../pages/BikeCategory/BikeCategory";
 import Blogs from "../pages/Blogs/Blogs";
 import BookingModal from "../pages/BookingModal/BookingModal";
-import DashBoard from "../pages/DashBoard/DashBoard";
+import Buyers from "../pages/Buyers/Buyers";
 import Login from "../pages/Login/Login";
+import MyOrders from "../pages/MyOrders/MyOrders";
 import SignUp from "../pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 
@@ -54,9 +56,16 @@ export const router = createBrowserRouter([
     {
     
         path: '/dashboard',
-        element: <PrivateRoute><DashboardLayouts></DashboardLayouts></PrivateRoute>,
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
-            
+            {
+                path: '/dashboard',
+                element:<MyOrders></MyOrders>
+            },
+            {
+                path: '/dashboard/allbuyers',
+                element:<Buyers></Buyers>
+            }
         ]
     
     }
