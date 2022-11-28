@@ -20,6 +20,7 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                alert('Sign Up completed successfully');
                 form.reset();
                 const userInfo = {
                     displayName: name,
@@ -31,7 +32,7 @@ const SignUp = () => {
                      })
                     .catch(err=>console.log(err))
             })
-            .catch(err => console.error(err));
+            .catch(err => console.error(err.message));
 
     }
 

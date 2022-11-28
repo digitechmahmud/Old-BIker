@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
 
 const MyOrders = () => {
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
 
     const {data:myOrders = [], refetch } = useQuery({
         queryKey: ['myOrders', user?.email],
@@ -14,6 +14,9 @@ const MyOrders = () => {
             
         }
     })
+    if (loading) {
+        return <progress className="progress w-56"></progress>
+    }
     console.log(myOrders);
     return (
         <div className='mt-20'>

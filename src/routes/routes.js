@@ -63,8 +63,9 @@ export const router = createBrowserRouter([
                 element:<MyOrders></MyOrders>
             },
             {
-                path: '/dashboard/allbuyers',
-                element:<Buyers></Buyers>
+                path: '/dashboard/buyers',
+                element: <Buyers></Buyers>,
+                // loader: ({ params }) => fetch(`http://localhost:5007/users/${params.id}`)
             }
         ]
     
