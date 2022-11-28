@@ -13,7 +13,8 @@ const SignUp = () => {
         const password = form.password.value;
         const name = form.name.value;
         const photoURL = form.photoURL.value;
-        console.log(email, password)
+        const role = form.role.value;
+        console.log(email, password, role)
 
         createEmailUser(email, password)
             .then(result => {
@@ -26,7 +27,7 @@ const SignUp = () => {
                 }
                 userProfileUpdate(userInfo)
                     .then(() => {
-                        saveUser(name, email);
+                        saveUser(name, email, role);
                      })
                     .catch(err=>console.log(err))
             })
@@ -34,13 +35,12 @@ const SignUp = () => {
 
     }
 
-    const saveUser = (name, email) => {
+    const saveUser = (name, email, role) => {
         const user = {
             
             name,
             email,
-            role: name
-
+            role
         };
         fetch('http://localhost:5000/users', {
             method: "POST",
@@ -70,6 +70,15 @@ const SignUp = () => {
                                         <span className="label-text">Name</span>
                                     </label>
                                     <input type="text" name='name' placeholder="name" className="input input-bordered" required/>
+                                </div>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Are you Buyer or Seller?</span>
+                                    </label>
+                                    <select name='role' className="select select-bordered w-full max-w-xs">
+                                        <option selected>Buyer</option>
+                                        <option>Seller</option>
+                                    </select>
                                 </div>
                                 <div className="form-control">
                                     <label className="label">

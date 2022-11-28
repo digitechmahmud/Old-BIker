@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
 
 const BookingModal = ({ bikeOption, setBikeOption }) => {
-    // console.log(bikeOption);
+    console.log(bikeOption);
     const { user } = useContext(AuthContext);
-    const {name, resalePrice, catId, _id } = bikeOption;
+    const {name, resalePrice } = bikeOption;
     const date = new Date();
     const handleBooking = e => {
         e.preventDefault();
         const form = e.target;
-        const name = form.name.value;
+        const username = form.username.value;
         const resalePrice = form.resalePrice.value;
         const phone = form.phone.value;
         const email = form.email.value;
@@ -17,13 +17,14 @@ const BookingModal = ({ bikeOption, setBikeOption }) => {
 
 
         const booking = {
-            product: name,
-            buyerName: user.displayName,
+            product: bikeOption.name,
+            buyerName: username,
             buyerEmail: email,
+            img:bikeOption.picture,
             buyerPhone: phone,
             resalePrice,
             meetingLocation: location,
-
+            date
         }
         fetch('http://localhost:5000/bookings', {
             method: "POST",
@@ -36,6 +37,7 @@ const BookingModal = ({ bikeOption, setBikeOption }) => {
             .then(data => {
                 console.log(data)
                 alert("Booked confirmed")
+
                 
             })
     }
@@ -49,7 +51,7 @@ const BookingModal = ({ bikeOption, setBikeOption }) => {
                     <h3 className="text-lg font-bold mb-4">{name}</h3>
                     <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3'>
                         {/* <input type="text" value={date} className="input input-bordered input-info w-full " /> */}
-                        <input type="text" name='name' placeholder="Full Name" defaultValue={user?.displayName} className="input input-bordered input-info w-full" readOnly />
+                        <input type="text" name='username' placeholder="Full Name" defaultValue={user?.displayName} className="input input-bordered input-info w-full" readOnly />
                         <input type="text" name='resalePrice' placeholder="Price" defaultValue={resalePrice} className="input input-bordered input-info w-full" disabled/>
                         <input type="text" name='phone' placeholder="Phone" className="input input-bordered input-info w-full " />
                         <input type="text" name='location' placeholder="Location" className="input input-bordered input-info w-full " />
