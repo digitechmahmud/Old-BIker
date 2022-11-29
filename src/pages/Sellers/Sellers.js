@@ -1,19 +1,17 @@
-import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useEffect, useState } from 'react';
-
 import { AuthContext } from '../../context/AuthProvider';
 
-const Buyers = () => {
+const Sellers = () => {
     const { user, loading } = useContext(AuthContext);
     const [users, setUsers] = useState([]);
-  
+
     useEffect(() => {
-        fetch('http://localhost:5000/users/Buyer')
+        fetch('http://localhost:5000/users/Seller')
             .then(res => res.json())
             .then(data => {
                 setUsers(data);
             })
-    },[])
+    }, [])
     console.log(users);
 
 
@@ -41,14 +39,14 @@ const Buyers = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user.role}</td>
-                                <td></td>
+                                <td><button>Verify</button></td>
                             </tr>)
-                         }                 
+                        }
                     </tbody>
                 </table>
             </div>
         </div>
-    ); 
+    );
 };
 
-export default Buyers;
+export default Sellers;

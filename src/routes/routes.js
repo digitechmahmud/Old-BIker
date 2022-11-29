@@ -1,13 +1,17 @@
 import DashboardLayout from "../Layouts/DashboardLayout";
-import DashboardLayouts from "../Layouts/DashboardLayout";
+import AddProduct from "../pages/AddProduct/AddProduct";
 import BikeCategory from "../pages/BikeCategory/BikeCategory";
 import Blogs from "../pages/Blogs/Blogs";
 import BookingModal from "../pages/BookingModal/BookingModal";
 import Buyers from "../pages/Buyers/Buyers";
 import Login from "../pages/Login/Login";
 import MyOrders from "../pages/MyOrders/MyOrders";
+import MyProducts from "../pages/MyProducts/MyProducts";
+import Sellers from "../pages/Sellers/Sellers";
 import SignUp from "../pages/SignUp/SignUp";
+import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
+import SellerRoute from "./SellerRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../Layouts/Main");
@@ -64,8 +68,19 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/buyers',
-                element: <Buyers></Buyers>,
-                // loader: ({ params }) => fetch(`http://localhost:5007/users/${params.id}`)
+                element: <AdminRoute><Buyers></Buyers></AdminRoute>,
+            },
+            {
+                path: '/dashboard/sellers',
+                element: <AdminRoute><Sellers></Sellers></AdminRoute>
+            },
+            {
+                path: '/dashboard/myproducts',
+                element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
+            },
+            {
+                path: '/dashboard/addproduct',
+                element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
             }
         ]
     

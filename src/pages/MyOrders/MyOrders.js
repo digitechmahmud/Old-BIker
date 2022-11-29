@@ -27,7 +27,7 @@ const MyOrders = () => {
                         <tr>
                             <th>
                                 <label>
-                                    <input type="checkbox" className="checkbox" />
+                                    <button>Delete</button>
                                 </label>
                             </th>
                             <th>Product</th>
@@ -41,7 +41,7 @@ const MyOrders = () => {
                             myOrders.map(myOrder => <tr>
                                 <th>
                                     <label>
-                                        <input type="checkbox" className="checkbox" />
+                                        <button>X</button>
                                     </label>
                                 </th>
                                 <td>
@@ -62,9 +62,9 @@ const MyOrders = () => {
                                     <br />
                                     
                                 </td>
-                                <td>Purple</td>
+                                <td>{myOrder.resalePrice}</td>
                                 <th>
-                                    <button className="btn btn-ghost btn-xs">details</button>
+                                    <button className="btn btn-ghost btn-xs">Payment</button>
                                 </th>
                             </tr>)    
                        }
