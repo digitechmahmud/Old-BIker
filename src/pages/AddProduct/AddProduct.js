@@ -7,7 +7,7 @@ const AddProduct = () => {
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        fetch('http://localhost:5000/categories')
+        fetch('https://old-biker-server.vercel.app/categories')
             .then(res => res.json())
             .then(data => {
                 setCategories(data);
@@ -43,7 +43,7 @@ const AddProduct = () => {
            
         }
 
-        fetch('http://localhost:5000/bikes', {
+        fetch('https://old-biker-server.vercel.app/bikes', {
             method: "POST",
             headers: {
                 "content-type": "application/json"

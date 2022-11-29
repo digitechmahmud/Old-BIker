@@ -32,8 +32,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/category/:id',
-                element: <BikeCategory></BikeCategory>,
-                loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.id}`)
+                element: <PrivateRoute><BikeCategory></BikeCategory></PrivateRoute>,
+                loader: ({ params }) => fetch(`https://old-biker-server.vercel.app/categories/${params.id}`)
             },
             {
                 path: '/Login',
@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
             {
                 path: '/bookingmodal',
                 element: <BookingModal></BookingModal>,
-                loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.id}`)
+                loader: ({ params }) => fetch(`https://old-biker-server.vercel.app/categories/${params.id}`)
             },
 
             

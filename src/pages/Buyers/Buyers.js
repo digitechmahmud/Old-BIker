@@ -8,7 +8,7 @@ const Buyers = () => {
     const [users, setUsers] = useState([]);
   
     useEffect(() => {
-        fetch('http://localhost:5000/users/Buyer')
+        fetch('https://old-biker-server.vercel.app/users/Buyer')
             .then(res => res.json())
             .then(data => {
                 setUsers(data);

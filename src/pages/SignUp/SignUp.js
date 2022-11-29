@@ -43,7 +43,7 @@ const SignUp = () => {
             email,
             role
         };
-        fetch('http://localhost:5000/users', {
+        fetch('https://old-biker-server.vercel.app/users', {
             method: "POST",
             headers: {
                 "content-type": "application/json" 

@@ -10,14 +10,14 @@ const MyProducts = () => {
     const { data: myProducts = [], refetch } = useQuery({
         queryKey: ['myProducts', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/bikes/${user?.email}`);
+            const res = await fetch(`https://old-biker-server.vercel.app/bikes/${user?.email}`);
             const data = await res.json();
             return data;
 
         }
     })
     const handleAdProduct = id => {
-        fetch(`http://localhost:5000/bikes/${id}`, {
+        fetch(`https://old-biker-server.vercel.app/bikes/${id}`, {
             method:"PUT"
         })
             .then(res => res.json())
@@ -32,7 +32,7 @@ const MyProducts = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure, you want to delete this review');
         if (proceed) {
-            fetch(`http://localhost:5000/bikes/${id}`, {
+            fetch(`https://old-biker-server.vercel.app/bikes/${id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())

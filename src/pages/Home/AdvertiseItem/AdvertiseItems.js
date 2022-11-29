@@ -6,7 +6,7 @@ const AdvertiseItems = () => {
     const {data:bikes = [] } = useQuery({
         queryKey: ['bikes'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/bike/true');
+            const res = await fetch('https://old-biker-server.vercel.app/bike/true');
             const data = await res.json();
             return data;
         }
