@@ -25,16 +25,19 @@ const AddProduct = () => {
         const sellerEmail = form.sellerEmail.value;
         const picture = form.picture.value;
         const description = form.description.value;
+        const address = form.address.value;
         const used = form.used.value;
         
+        
         const product = {
-            name: name,
+            name,
             catId: category,
             resalePrice: price,
             originalPrice,
             sellerName,
             sellerEmail,
             picture,
+            location: address,
             description,
             yearsOfUse: used
            
@@ -71,7 +74,7 @@ const AddProduct = () => {
                         <select name='category' className="select select-bordered w-full input-bordered input-info">
 
                             {
-                                categories.map((category, i) => <option onClick={()=>setCategory(category)} key={i} value={category}>{category.name}</option>)
+                                categories.map((category, i) => <option key={i} value={category.catId}>{category.catId}</option>)
                             }
                         </select>
                     </div>
@@ -80,6 +83,12 @@ const AddProduct = () => {
                             <span className="label-text">Price</span>
                         </label>
                         <input type="text" name="price" placeholder="price" className="input input-bordered" required />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Address</span>
+                        </label>
+                        <input type="text" name="address" placeholder="address" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">

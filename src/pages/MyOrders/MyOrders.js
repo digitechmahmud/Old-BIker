@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
 
 const MyOrders = () => {
     const { user, loading } = useContext(AuthContext);
+    const [deleteOrder, setDeleteOrder] = useState([]);
 
     const {data:myOrders = [], refetch } = useQuery({
         queryKey: ['myOrders', user?.email],
@@ -14,10 +15,32 @@ const MyOrders = () => {
             
         }
     })
+    
+
+    const handleDelete = id => {
+        const proceed = window.confirm('Are you sure, you want to delete this review');
+        if (proceed) {
+            fetch(`http://localhost:5000/bookings/${id}`, {
+                method: "Delete",
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.deletedCount > 0) {
+                        alert('Successfully Deleted');
+                        const remaining = myOrders.filter(mo => mo._id !== id);
+                        setDeleteOrder(remaining);
+                    }
+                })
+            
+        }
+    }
+
     if (loading) {
         return <progress className="progress w-56"></progress>
     }
     console.log(myOrders);
+
     return (
         <div className='mt-20'>
             <h2 className='font-bold text-2xl'>My Orders</h2>
@@ -41,19 +64,15 @@ const MyOrders = () => {
                             myOrders.map(myOrder => <tr>
                                 <th>
                                     <label>
-                                        <button>X</button>
+                                        <button onClick={()=>handleDelete(myOrder._id)}>X</button>
                                     </label>
                                 </th>
                                 <td>
                                     <div className="flex items-center space-x-3">
                                         <div className="avatar">
                                             <div className="mask mask-squircle w-12 h-12">
-                                                <img width={40} height={30} src={myOrder.picture} alt="Avatar Tailwind CSS Component" />
+                                                <img width={40} height={30} src={myOrder.img} alt="Avatar Tailwind CSS Component" />
                                             </div>
-                                        </div>
-                                        <div>
-                                            <div className="font-bold"></div>
-                                            <div className="text-sm opacity-50">United States</div>
                                         </div>
                                     </div>
                                 </td>

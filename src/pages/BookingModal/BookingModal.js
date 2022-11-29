@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { AuthContext } from '../../context/AuthProvider';
 
 const BookingModal = ({ bikeOption, setBikeOption }) => {
@@ -36,7 +37,9 @@ const BookingModal = ({ bikeOption, setBikeOption }) => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                alert("Booked confirmed")
+                toast.success("Booked confirmed")
+                setBikeOption(null);
+                
 
                 
             })
@@ -59,6 +62,7 @@ const BookingModal = ({ bikeOption, setBikeOption }) => {
                         <input className='btn btn-accent w-full' type="submit" value="Submit" />
                     </form>
                 </div>
+                <Toaster/>
             </div>
         </div>
     );
