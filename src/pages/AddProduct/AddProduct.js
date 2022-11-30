@@ -1,10 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 
 const AddProduct = () => {
     const [categories, setCategories] = useState([]);
     const [category, setCategory] = useState(null);
     const { user } = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('https://old-biker-server.vercel.app/categories')
@@ -53,7 +57,8 @@ const AddProduct = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                alert('Success fully posted');
+                toast.success('Success fully posted');
+                navigate('/dashboard/myproducts');
             })
         
     }
@@ -126,6 +131,7 @@ const AddProduct = () => {
                         <button className="btn btn-primary w-1/3">Add Service</button>
                     </div>
                 </form>
+                <Toaster></Toaster>
             </div>
 
         </div>

@@ -13,7 +13,7 @@ const BikeCard = ({ bike, setBikeOption }) => {
                 <p>Sale Price: ${resalePrice}</p>
                 <p>Origianl Price: ${originalPrice}</p>
                 <p>Life time use:{yearsOfUse}</p>
-                <p>{sellerName}</p>
+                <p> Seller Name:{sellerName}</p>
                 <div className="card-actions justify-end">
                     <label onClick={()=>setBikeOption(bike)} htmlFor="booking-modal" className="btn btn-primary">Book Now</label>
                 </div>

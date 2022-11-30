@@ -1,10 +1,13 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 
 const SignUp = () => {
     const [createdUser, setCreatedUser] = useState('');
     const { createEmailUser, userProfileUpdate } = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     const handleSignUpForm = (e) => {
         e.preventDefault();
@@ -20,8 +23,9 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                alert('Sign Up completed successfully');
+                toast.success('Sign Up completed successfully');
                 form.reset();
+                navigate('/');
                 const userInfo = {
                     displayName: name,
                     photoURL: photoURL
@@ -107,6 +111,7 @@ const SignUp = () => {
                                     <button className="btn btn-primary">Sign Up</button>
                                 </div>
                             </form>
+                            <Toaster></Toaster>
                         </div>
                     </div>
                 </div>

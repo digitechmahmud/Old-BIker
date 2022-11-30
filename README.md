@@ -1,5 +1,22 @@
 # Getting Started with Create React App
 
+## Technology used ##
+
+# React JavaScript library 
+# Firebase
+# Tailwind CSS framework
+# Daisy UI 
+
+## Feature & Functionality ##
+
+Markup : * It's a used bike Buy/Sale website.
+         * All data serve from node express js server dynamically from MongoDB.
+         * Use MongoDB for store data and retrieve data.
+         * Using firebase authentication system. 
+         * And use react router and private route also. 
+         * Authorization private route in Admin, Buyer and Seller
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

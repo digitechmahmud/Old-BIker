@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
+import logo from '../../../assets/logo/OldBiker.png';
 
 const NavBar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -13,7 +14,6 @@ const NavBar = () => {
 
     const menuItems = <React.Fragment>
         <li><Link className="font-semibold text-accent" to='/home'>Home</Link></li>
-        <li><Link className="font-semibold text-accent" to='/about'>About</Link></li>
         <li><Link className="font-semibold text-accent" to='/blogs'>Blogs</Link></li>
         
         {
@@ -38,16 +38,13 @@ const NavBar = () => {
                             {menuItems}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                    <Link to='/' className="btn text-xl btn-ghost"><img className='-mt-3' width={80} height={30} src={logo} alt=''/></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
                         {menuItems}
                     </ul>
-                </div>
-                <div className="navbar-end">
-                    <a className="btn">Get started</a>
-                </div>
+                </div> 
             </div>
         </div>
     );

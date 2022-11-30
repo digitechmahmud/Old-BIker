@@ -12,15 +12,18 @@ import SignUp from "../pages/SignUp/SignUp";
 import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 import SellerRoute from "./SellerRoute";
+import ErrorMessage from '../pages/ErrorMessage/ErrorMessage';
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../Layouts/Main");
 const { default: Home } = require("../pages/Home/Home");
 
+
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement:<ErrorMessage></ErrorMessage>,
         children: [
             {
                 path: '/',

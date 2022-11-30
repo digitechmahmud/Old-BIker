@@ -30,7 +30,7 @@ const MyProducts = () => {
             })
     }
     const handleDelete = id => {
-        const proceed = window.confirm('Are you sure, you want to delete this review');
+        const proceed = window.confirm('Are you sure, you want to delete this Item');
         if (proceed) {
             fetch(`https://old-biker-server.vercel.app/bikes/${id}`, {
                 method: "DELETE"
@@ -69,6 +69,7 @@ const MyProducts = () => {
                             <th>Name</th>
                             <th>Price</th>
                             <th>Advertise</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -99,6 +100,11 @@ const MyProducts = () => {
                                     {
                                         product?.ad !== 'true' && <button onClick={()=>handleAdProduct(product._id)} className="btn btn-ghost btn-xs">Active</button>
                                     }
+                                    
+                                </th>
+                                <th>
+                                    <button  className="btn btn-ghost btn-xs">Unsold</button>
+                                
                                     
                                 </th>
                             </tr>)

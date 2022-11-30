@@ -1,19 +1,41 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React, { useContext, useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { AuthContext } from '../../context/AuthProvider';
 
 const Sellers = () => {
     const { user, loading } = useContext(AuthContext);
-    const [users, setUsers] = useState([]);
+    const [deletedUser, setDeletedUser] = useState([]);
 
-    useEffect(() => {
-        fetch('https://old-biker-server.vercel.app/users/Seller')
-            .then(res => res.json())
-            .then(data => {
-                setUsers(data);
-            })
-    }, [])
+    const { data: users = [], refetch } = useQuery({
+        queryKey: ['users'],
+        queryFn: async () => {
+            const res = await fetch('https://old-biker-server.vercel.app/users/Seller')
+            const data = await res.json();
+            return data;
+        }
+    })
     console.log(users);
 
+    const handleDeleteSeller = id => {
+        const proceed = window.confirm('Are you sure, you want to delete this Seller');
+        if (proceed) {
+            fetch(`http://localhost:5000/users/${id}`, {
+                method: "Delete"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.deletedCount > 0) {
+                        toast.success('Successfully Deleted');
+                        const remaining = users.filter(ur => ur._id !== id);
+                        setDeletedUser(remaining);
+                        refetch();
+                    }
+                })
+        }
+
+    }
 
     if (loading) {
         return <progress className="progress w-56"></progress>
@@ -30,6 +52,8 @@ const Sellers = () => {
                             <th>Email</th>
                             <th>Role</th>
                             <th>Verify</th>
+                            <th>Delete</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -40,10 +64,12 @@ const Sellers = () => {
                                 <td>{user.email}</td>
                                 <td>{user.role}</td>
                                 <td><button>Verify</button></td>
+                                <td><button onClick={()=>handleDeleteSeller(user._id)} className='btn btn-ghost'>X</button></td>
                             </tr>)
                         }
                     </tbody>
                 </table>
+                <Toaster></Toaster>
             </div>
         </div>
     );
