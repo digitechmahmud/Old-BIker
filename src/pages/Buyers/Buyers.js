@@ -22,7 +22,7 @@ const Buyers = () => {
     const handleDeleteBuyer = id => {
         const proceed = window.confirm('Are you sure, you want to delete this Buyer');
         if (proceed) {
-            fetch(`http://localhost:5000/users/${id}`, {
+            fetch(`https://old-biker-server.vercel.app/users/${id}`, {
                 method: "Delete"
             })
                 .then(res => res.json())
