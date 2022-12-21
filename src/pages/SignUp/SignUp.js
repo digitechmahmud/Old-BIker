@@ -36,7 +36,7 @@ const SignUp = () => {
                      })
                     .catch(err=>console.log(err))
             })
-            .catch(err => console.error(err.message));
+            .catch(err => toast.error(err.message));
 
     }
 

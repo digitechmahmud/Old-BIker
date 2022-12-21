@@ -27,7 +27,7 @@ const NavBar = () => {
         }
     </React.Fragment>
     return (
-        <div>
+        <div className='mb-10'>
             <div className="navbar fixed w-full z-10 top-0 bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
