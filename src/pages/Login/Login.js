@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider } from 'firebase/auth';
+import { toast, Toaster } from 'react-hot-toast';
 
 const Login = () => {
     const { loginUser, loading, signInGoogle } = useContext(AuthContext);
@@ -26,12 +27,11 @@ const Login = () => {
                 console.log(user);
                 navigate(from, { replace: true });
                 form.reset();
-        })
+            })
+            .catch(err => toast.error(err.message));
 
     }
-    if (loading) {
-        return <progress className="progress w-56"></progress>
-    }
+   
     const handleGoogleSignIn = () => {
         signInGoogle(googleProvider)
             .then(result => {
@@ -40,7 +40,7 @@ const Login = () => {
                 navigate(from, { replace: true });
 
             })
-            .catch(error => console.log(error));
+            .catch(error => toast.error(error.message));
     }
     return (
         <div>
@@ -79,6 +79,7 @@ const Login = () => {
                                     </div>
                                 </div>
                             </form>
+                            <Toaster/>
                         </div>
                     </div>
                 </div>
