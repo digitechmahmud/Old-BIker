@@ -13,7 +13,7 @@ const OurService = () => {
         <div>
             <div className="hero min-h-screen" data-aos='fade-down' style={{ backgroundImage: `url(${background})` }}>
                 <div className="hero-overlay bg-opacity-60"></div>
-                <div className="hero-content text-center text-neutral-content" data-aos='fade-bottom'>
+                <div className="hero-content text-center text-neutral-content" data-aos='fade-up'>
                     <div className="max-w-md">
                         <h1 className="mb-5 text-5xl font-bold text-accent">Hello Old Biker</h1>
                         <h1 className="mb-5 text-3xl font-bold text-accent">We Buy Bikes</h1>
