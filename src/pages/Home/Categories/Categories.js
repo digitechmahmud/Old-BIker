@@ -1,7 +1,13 @@
 import React, { createFactory, useEffect, useState } from 'react';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Categories = () => {
+
+    useEffect(() => {
+        AOS.init({ duration: 2000 });
+    }, []);
     const [categories, setCategories] = useState([]);
   
     useEffect(() => {
@@ -13,10 +19,10 @@ const Categories = () => {
     },[])
     
     return (
-        <div className='mt-20 mb-20'>
+        <div className='mt-48 mb-10 min-h-screen' data-aos='fade-down'>
             <div>
                 <h2 className='text-3xl text-center font-semibold mb-5'>Choose Your Best Brand Category</h2>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' data-aos='fade-left'>
                     {
                         categories.map(category => <div className="card w-96 bg-base-100 shadow-xl">
                             <figure className="">

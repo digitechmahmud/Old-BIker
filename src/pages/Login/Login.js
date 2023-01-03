@@ -42,6 +42,7 @@ const Login = () => {
             })
             .catch(error => toast.error(error.message));
     }
+    
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
@@ -79,7 +80,7 @@ const Login = () => {
                                     </div>
                                 </div>
                             </form>
-                            <Toaster/>
+                            <Toaster />
                         </div>
                     </div>
                 </div>
